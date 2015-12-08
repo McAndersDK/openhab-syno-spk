@@ -36,6 +36,7 @@ preinst ()
   #is the User Home service enabled?
   UH_SERVICE=maybe
   synouser --add userhometest Testing123 "User Home test user" 0 "" ""
+  sleep 1
   UHT_HOMEDIR=`cat /etc/passwd | sed -r '/User Home test user/!d;s/^.*:User Home test user:(.*):.*$/\1/'`
   if echo $UHT_HOMEDIR | grep '/var/services/homes/' > /dev/null; then
     if [ ! -d $UHT_HOMEDIR ]; then
